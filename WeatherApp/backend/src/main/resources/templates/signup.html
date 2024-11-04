@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="_layout">
+
+<section layout:fragment="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+                <!-- Success Message -->
+                <div th:if="${param.success}">
+                    <div class="alert alert-info">You've successfully
+                        registered to Deeps!
+                    </div>
+                </div>
+
+                <!-- Account exists Message -->
+                <div th:if="${param.exists}">
+                    <div class="alert alert-danger">There's an account already registered with that username/email.
+                    </div>
+                </div>
+
+
+
+                <h1> Registration</h1>
+                <form th:action="@{/signup}" method="post" th:object="${userView}">
+                    <div class="form-group">
+                        <label class="control-label" for="firstName">First Name</label>
+                        <input id="firstName" class="form-control" th:field="*{firstName}" required
+                            autofocus="autofocus">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="lastName">Last Name</label>
+                        <input id="lastName" class="form-control" th:field="*{lastName}" required autofocus="autofocus">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="userName">Username</label>
+                        <input id="userName" class="form-control" th:field="*{username}" required autofocus="autofocus">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="email">Email Address</label>
+                        <input id="email" class="form-control" th:field="*{email}" required autofocus="autofocus">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="password">Password</label>
+                        <input id="password" class="form-control" type="password" th:field="*{password}" required
+                            autofocus="autofocus">
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-succes"> Register</button>
+                        <span>Already registered? <a href="/" th:href="@{/login}">Login here</a></span>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+</html>
